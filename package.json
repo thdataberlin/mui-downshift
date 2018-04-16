@@ -17,9 +17,13 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "core-js": "^2.5.5",
     "downshift": "^1.28.0",
+    "fetch-mock": "^6.3.0",
+    "react-fetch-component": "^5.4.1",
     "react-popper": "0.8.2",
-    "react-virtualized": "^9.18.5"
+    "react-virtualized": "^9.18.5",
+    "starwars-names": "^1.6.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.6",
