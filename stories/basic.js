@@ -59,6 +59,7 @@ storiesOf('Basic', module)
           label: 'Star Wars character',
           helperText: 'Pick your favorite',
         })}
+        onChange={action('onChange')}
       />
     </div>
   ));

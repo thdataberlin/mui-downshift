@@ -14,14 +14,24 @@ class MuiDownshift extends Component {
     };
   }
 
-  // TODO: Call this
-  resetSearchFilter = () => {
+  resetSearchFilter() {
     this.setState({ searchFilter: '' });
-  };
+  }
+
+  focusSearchFilter() {
+    // this.menu.focusSearchFilter();
+  }
 
   handleSearchFilterChange = event => {
     const newValue = event.target.value;
     this.setState({ searchFilter: newValue });
+  };
+
+  handleStateChange = changes => {
+    if (changes.type === '__autocomplete_unknown__' && changes.isOpen)  {
+      this.resetSearchFilter();
+      this.focusSearchFilter();
+    }
   };
 
   render() {
@@ -57,6 +67,7 @@ class MuiDownshift extends Component {
           itemCount={(filteredItems ? filteredItems.length : 0) + (includeFooter ? 1 : 0)} // Needed for windowing
           itemToString={itemToString}
           {...props}
+          onStateChange={this.handleStateChange}
         >
           {downshiftProps => (
             <div {...getRootProps && getRootProps()}>
@@ -65,6 +76,9 @@ class MuiDownshift extends Component {
               </Target>
 
               <Menu
+                ref={menu => {
+                  this.menu = menu;
+                }}
                 items={filteredItems}
                 getListItem={getListItem}
                 getListItemKey={getListItemKey}
