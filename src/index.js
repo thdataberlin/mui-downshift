@@ -7,11 +7,29 @@ import Input from './Input';
 import Menu from './Menu';
 
 class MuiDownshift extends Component {
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      searchFilter: undefined,
+    };
+  }
+
+  // TODO: Call this
+  resetSearchFilter = () => {
+    this.setState({ searchFilter: undefined });
+  };
+
+  handleSearchFilterChange = event => {
+    const newValue = event.target.value;
+    this.setState({ searchFilter: newValue });
+  };
+
   render() {
     const {
       items,
       itemToString,
       getRootProps,
+      getFilteredItems,
 
       // Input
       getInputProps,
@@ -30,10 +48,13 @@ class MuiDownshift extends Component {
       ...props
     } = this.props;
 
+    const { searchFilter } = this.state;
+    const filteredItems = searchFilter ? getFilteredItems(items, searchFilter) : items;
+
     return (
       <Manager>
         <Downshift
-          itemCount={(items ? items.length : 0) + (includeFooter ? 1 : 0)} // Needed for windowing
+          itemCount={(filteredItems ? filteredItems.length : 0) + (includeFooter ? 1 : 0)} // Needed for windowing
           itemToString={itemToString}
           {...props}
         >
@@ -44,7 +65,7 @@ class MuiDownshift extends Component {
               </Target>
 
               <Menu
-                items={items}
+                items={filteredItems}
                 getListItem={getListItem}
                 getListItemKey={getListItemKey}
                 showEmpty={showEmpty}
@@ -64,6 +85,7 @@ class MuiDownshift extends Component {
 }
 
 MuiDownshift.defaultProps = {
+  getFilteredItems: (items, searchFilter) => items.filter(item => item.label.includes(searchFilter)),
   itemToString: item => (item ? item.label : ''),
   getListItem({ getItemProps, item, index }) {
     return item ? (
@@ -87,6 +109,7 @@ MuiDownshift.propTypes = {
   itemToString: PropTypes.func,
   selectedItem: PropTypes.object,
   getRootProps: PropTypes.func,
+  // getFilteredItems: PropTypes.func,
 
   // Input
   getInputProps: PropTypes.func,
