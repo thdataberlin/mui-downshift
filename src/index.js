@@ -10,13 +10,13 @@ class MuiDownshift extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      searchFilter: undefined,
+      searchFilter: '',
     };
   }
 
   // TODO: Call this
   resetSearchFilter = () => {
-    this.setState({ searchFilter: undefined });
+    this.setState({ searchFilter: '' });
   };
 
   handleSearchFilterChange = event => {

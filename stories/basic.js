@@ -53,12 +53,14 @@ storiesOf('Basic', module)
     />
   ))
   .add('helperText and search', () => (
-    <StarWarsSelect
-      getInputProps={() => ({
-        label: 'Star Wars character',
-        helperText: 'Pick your favorite',
-      })}
-    />
+    <div style={{ width: 300 }}>
+      <StarWarsSelect
+        getInputProps={() => ({
+          label: 'Star Wars character',
+          helperText: 'Pick your favorite',
+        })}
+      />
+    </div>
   ));
 
 storiesOf('Input', module).add('do not show menu on focus', () => (

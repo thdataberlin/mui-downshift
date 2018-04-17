@@ -193,7 +193,8 @@ function Menu({ getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...p
                     value={searchFilter}
                     onChange={onSearchFilterChange}
                     margin="dense"
-                    style={{ width: '100%' }} />
+                    style={{ width: '100%', paddingLeft: 24, paddingRight: 24 }}
+                  />
                   <MuiVirtualList {...props} width={width} />
                 </React.Fragment>
               )}
