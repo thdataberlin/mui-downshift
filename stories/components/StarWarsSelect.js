@@ -5,22 +5,10 @@ import MuiDownshift from '../../src';
 const items = starwarsNames.map((label, value) => ({ label, value }));
 
 export default class StarWarsSelect extends Component {
-  state = {
-    filteredItems: items,
-  };
-
-  handleStateChange = changes => {
-    if (typeof changes.inputValue === 'string') {
-      const filteredItems = items.filter(item => item.label.toLowerCase().includes(changes.inputValue.toLowerCase()));
-      this.setState({ filteredItems });
-    }
-  };
-
   render() {
-    const { filteredItems } = this.state;
     return (
       <MuiDownshift
-        items={filteredItems}
+        items={items}
         onStateChange={this.handleStateChange}
         // keyMapper={rowIndex => filteredItems[rowIndex] && filteredItems[rowIndex].label}
         {...this.props}
