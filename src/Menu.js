@@ -168,42 +168,45 @@ class MuiVirtualList extends Component {
   }
 }
 
-function Menu({ getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...props }) {
-  return props.downshiftProps.isOpen ? (
-    <AutoSizer>
-      {({ width }) => (
-        <Portal>
-          <Popper placement="bottom-start" style={{ zIndex: zIndex.modal }} onMouseUp={e => e.stopPropagation()}>
-            <Paper style={{ width }}>
-              {getInfiniteLoaderProps ? (
-                <InfiniteLoader {...getInfiniteLoaderProps({ downshiftProps: props.downshiftProps })}>
-                  {({ onRowsRendered, registerChild }) => (
-                    <MuiVirtualList
-                      {...props}
-                      width={width}
-                      onRowsRendered={onRowsRendered}
-                      registerChild={registerChild}
+class Menu extends Component {
+  render() {
+    const { getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...props } = this.props;
+    return props.downshiftProps.isOpen ? (
+      <AutoSizer>
+        {({ width }) => (
+          <Portal>
+            <Popper placement="bottom-start" style={{ zIndex: zIndex.modal }} onMouseUp={e => e.stopPropagation()}>
+              <Paper style={{ width }}>
+                {getInfiniteLoaderProps ? (
+                  <InfiniteLoader {...getInfiniteLoaderProps({ downshiftProps: props.downshiftProps })}>
+                    {({ onRowsRendered, registerChild }) => (
+                      <MuiVirtualList
+                        {...props}
+                        width={width}
+                        onRowsRendered={onRowsRendered}
+                        registerChild={registerChild}
+                      />
+                    )}
+                  </InfiniteLoader>
+                ) : (
+                  <React.Fragment>
+                    <Input
+                      placeholder="Search"
+                      value={searchFilter}
+                      onChange={onSearchFilterChange}
+                      margin="dense"
+                      style={{ width: width - 48, paddingLeft: 24, paddingRight: 24 }}
                     />
-                  )}
-                </InfiniteLoader>
-              ) : (
-                <React.Fragment>
-                  <Input
-                    placeholder="Search"
-                    value={searchFilter}
-                    onChange={onSearchFilterChange}
-                    margin="dense"
-                    style={{ width: width - 48, paddingLeft: 24, paddingRight: 24 }}
-                  />
-                  <MuiVirtualList {...props} width={width} />
-                </React.Fragment>
-              )}
-            </Paper>
-          </Popper>
-        </Portal>
-      )}
-    </AutoSizer>
-  ) : null;
+                    <MuiVirtualList {...props} width={width} />
+                  </React.Fragment>
+                )}
+              </Paper>
+            </Popper>
+          </Portal>
+        )}
+      </AutoSizer>
+    ) : null;
+  }
 }
 
 export default withStyles(styles)(Menu);
