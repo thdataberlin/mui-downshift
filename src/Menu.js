@@ -4,6 +4,7 @@ import { Popper } from 'react-popper';
 import classnames from 'classnames';
 import Portal from 'material-ui/Portal';
 import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
 import zIndex from 'material-ui/styles/zIndex';
 
@@ -167,7 +168,7 @@ class MuiVirtualList extends Component {
   }
 }
 
-function Menu({ getInfiniteLoaderProps, ...props }) {
+function Menu({ getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...props }) {
   return props.downshiftProps.isOpen ? (
     <AutoSizer>
       {({ width }) => (
@@ -186,7 +187,10 @@ function Menu({ getInfiniteLoaderProps, ...props }) {
                   )}
                 </InfiniteLoader>
               ) : (
-                <MuiVirtualList {...props} width={width} />
+                <React.Fragment>
+                  <TextField label="Search" value={searchFilter} onChange={onSearchFilterChange} margin="normal" />
+                  <MuiVirtualList {...props} width={width} />
+                </React.Fragment>
               )}
             </Paper>
           </Popper>

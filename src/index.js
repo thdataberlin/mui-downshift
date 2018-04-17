@@ -75,6 +75,8 @@ class MuiDownshift extends Component {
                 menuItemCount={menuItemCount}
                 menuHeight={menuHeight}
                 downshiftProps={downshiftProps}
+                searchFilter={searchFilter}
+                onSearchFilterChange={this.handleSearchFilterChange}
               />
             </div>
           )}
