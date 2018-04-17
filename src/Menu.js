@@ -4,7 +4,7 @@ import { Popper } from 'react-popper';
 import classnames from 'classnames';
 import Portal from 'material-ui/Portal';
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
+import Input from 'material-ui/Input';
 import { withStyles } from 'material-ui/styles';
 import zIndex from 'material-ui/styles/zIndex';
 
@@ -188,7 +188,12 @@ function Menu({ getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...p
                 </InfiniteLoader>
               ) : (
                 <React.Fragment>
-                  <TextField label="Search" value={searchFilter} onChange={onSearchFilterChange} margin="normal" />
+                  <Input
+                    placeholder="Search"
+                    value={searchFilter}
+                    onChange={onSearchFilterChange}
+                    margin="dense"
+                    style={{ width: '100%' }} />
                   <MuiVirtualList {...props} width={width} />
                 </React.Fragment>
               )}
