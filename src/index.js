@@ -19,7 +19,7 @@ class MuiDownshift extends Component {
   }
 
   focusSearchFilter() {
-    // this.menu.focusSearchFilter();
+    this.menu.focusSearchFilter();
   }
 
   handleSearchFilterChange = event => {
@@ -76,7 +76,7 @@ class MuiDownshift extends Component {
               </Target>
 
               <Menu
-                ref={menu => {
+                onRef={menu => {
                   this.menu = menu;
                 }}
                 items={filteredItems}

@@ -21,7 +21,6 @@ class Input extends Component {
     const { downshiftProps: { isOpen, openMenu, closeMenu } } = this.props;
 
     if (!isOpen) {
-      this.input.focus();
       openMenu();
     } else {
       closeMenu();
