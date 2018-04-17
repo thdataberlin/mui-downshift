@@ -87,7 +87,8 @@ class MuiDownshift extends Component {
 }
 
 MuiDownshift.defaultProps = {
-  getFilteredItems: (items, searchFilter) => items.filter(item => item.label.includes(searchFilter)),
+  getFilteredItems: (items, searchFilter) =>
+    items.filter(item => item.label.toLowerCase().includes(searchFilter.toLowerCase())),
   itemToString: item => (item ? item.label : ''),
   getListItem({ getItemProps, item, index }) {
     return item ? (
