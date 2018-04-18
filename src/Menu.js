@@ -185,7 +185,7 @@ class Menu extends Component {
 
   render() {
     const { getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...props } = this.props;
-    return props.downshiftProps.isOpen ? (
+    return (
       <AutoSizer>
         {({ width }) => (
           <Portal>
@@ -229,7 +229,7 @@ class Menu extends Component {
           </Portal>
         )}
       </AutoSizer>
-    ) : null;
+    );
   }
 }
 

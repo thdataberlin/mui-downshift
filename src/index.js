@@ -75,23 +75,25 @@ class MuiDownshift extends Component {
                 <Input getInputProps={getInputProps} loading={loading} downshiftProps={downshiftProps} />
               </Target>
 
-              <Menu
-                onRef={menu => {
-                  this.menu = menu;
-                }}
-                items={filteredItems}
-                getListItem={getListItem}
-                getListItemKey={getListItemKey}
-                showEmpty={showEmpty}
-                includeFooter={includeFooter}
-                getInfiniteLoaderProps={getInfiniteLoaderProps}
-                getVirtualListProps={getVirtualListProps}
-                menuItemCount={menuItemCount}
-                menuHeight={menuHeight}
-                downshiftProps={downshiftProps}
-                searchFilter={searchFilter}
-                onSearchFilterChange={this.handleSearchFilterChange}
-              />
+              {downshiftProps.isOpen && (
+                <Menu
+                  onRef={menu => {
+                    this.menu = menu;
+                  }}
+                  items={filteredItems}
+                  getListItem={getListItem}
+                  getListItemKey={getListItemKey}
+                  showEmpty={showEmpty}
+                  includeFooter={includeFooter}
+                  getInfiniteLoaderProps={getInfiniteLoaderProps}
+                  getVirtualListProps={getVirtualListProps}
+                  menuItemCount={menuItemCount}
+                  menuHeight={menuHeight}
+                  downshiftProps={downshiftProps}
+                  searchFilter={searchFilter}
+                  onSearchFilterChange={this.handleSearchFilterChange}
+                />
+              )}
             </div>
           )}
         </Downshift>
