@@ -8,6 +8,8 @@ import Input from 'material-ui/Input';
 import { withStyles } from 'material-ui/styles';
 import zIndex from 'material-ui/styles/zIndex';
 
+const ESCAPE_KEY = 27;
+
 const styles = theme => ({
   keyboardFocused: {
     backgroundColor: theme.palette.divider,
@@ -209,7 +211,8 @@ class Menu extends Component {
                       style={{ width: width - 48, paddingLeft: 24, paddingRight: 24 }}
                       onKeyDown={event => {
                         // Escape key support
-                        if (event.keyCode === 27) {
+                        if (event.keyCode === ESCAPE_KEY) {
+                          // Hide the menu
                           props.downshiftProps.reset();
                         }
                       }}
