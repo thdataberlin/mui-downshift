@@ -14,20 +14,8 @@ class MuiDownshift extends Component {
     };
   }
 
-  resetSearchFilter() {
-    this.setState({ searchFilter: '' });
-  }
-
-  handleSearchFilterChange = event => {
-    const newValue = event.target.value;
-    this.setState({ searchFilter: newValue });
-  };
-
-  // TODO: THis should now be unnessary
-  handleStateChange = changes => {
-    if (changes.type === '__autocomplete_unknown__' && changes.isOpen) {
-      this.resetSearchFilter();
-    }
+  handleSearchFilterChange = searchFilter => {
+    this.setState({ searchFilter });
   };
 
   render() {

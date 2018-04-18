@@ -169,8 +169,17 @@ class MuiVirtualList extends Component {
 }
 
 class Menu extends Component {
+  componentDidMount() {
+    this.resetSearchFilter();
+  }
+
+  resetSearchFilter() {
+    const { onSearchFilterChange } = this.props;
+    onSearchFilterChange('');
+  }
+
   render() {
-    const { getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...props } = this.props;
+    const { getInfiniteLoaderProps, onSearchFilterChange, ...props } = this.props;
     return (
       <AutoSizer>
         {({ width }) => (
@@ -192,8 +201,9 @@ class Menu extends Component {
                   <React.Fragment>
                     <Input
                       placeholder="Search"
-                      value={searchFilter}
-                      onChange={onSearchFilterChange}
+                      onChange={event => {
+                        onSearchFilterChange(event.target.value);
+                      }}
                       margin="dense"
                       autoFocus
                       style={{ width: width - 48, paddingLeft: 24, paddingRight: 24 }}
