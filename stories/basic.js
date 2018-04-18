@@ -52,7 +52,17 @@ storiesOf('Basic', module)
       })}
     />
   ))
-  .add('helperText and search', () => (
+  .add('search filter', () => (
+    <div style={{ width: 300 }}>
+      <StarWarsSelect
+        getInputProps={() => ({
+          label: 'Star Wars character',
+        })}
+        onChange={action('onChange')}
+      />
+    </div>
+  ))
+  .add('search filter and helperText', () => (
     <div style={{ width: 300 }}>
       <StarWarsSelect
         getInputProps={() => ({
