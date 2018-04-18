@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import MuiInput, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { LinearProgress } from 'material-ui/Progress';
@@ -33,9 +32,15 @@ class Input extends Component {
       ? getInputProps(downshiftProps)
       : {};
 
+    const isSomethingSelected = downshiftProps.inputValue;
+
     return (
       <FormControl disabled={disabled} required={required} error={error} fullWidth>
-        {label && <InputLabel {...labelProps}>{label}</InputLabel>}
+        {label && (
+          <InputLabel focused={false} shrink={isSomethingSelected}>
+            {label}
+          </InputLabel>
+        )}
         <MuiInput
           inputRef={input => {
             this.input = input;
