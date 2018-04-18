@@ -10,6 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import zIndex from 'material-ui/styles/zIndex';
 
 const ESCAPE_KEY = 27;
+const CURSOR_DOWN_KEY = 40;
 
 const styles = theme => ({
   keyboardFocused: {
@@ -216,14 +217,25 @@ class Menu extends Component {
                       }
                       style={{ width: width - 48, marginLeft: 24, marginRight: 24 }}
                       onKeyDown={event => {
-                        // Escape key support
-                        if (event.keyCode === ESCAPE_KEY) {
-                          // Hide the menu
-                          props.downshiftProps.reset();
+                        switch (event.keyCode) {
+                          case ESCAPE_KEY:
+                            // Hide the menu
+                            props.downshiftProps.reset();
+                            break;
+                          case CURSOR_DOWN_KEY:
+                            // Focus the menu
+                            // this.muiVirtuallist.focus();
+                            break;
                         }
                       }}
                     />
-                    <MuiVirtualList {...props} width={width} />
+                    <MuiVirtualList
+                      {...props}
+                      width={width}
+                      ref={muiVirtuallist => {
+                        this.muiVirtuallist = muiVirtuallist;
+                      }}
+                    />
                   </React.Fragment>
                 )}
               </Paper>
