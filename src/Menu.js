@@ -4,8 +4,9 @@ import { Popper } from 'react-popper';
 import classnames from 'classnames';
 import Portal from 'material-ui/Portal';
 import Paper from 'material-ui/Paper';
-import Input from 'material-ui/Input';
+import Input, { InputAdornment } from 'material-ui/Input';
 import { withStyles } from 'material-ui/styles';
+import SearchIcon from '@material-ui/icons/Search';
 import zIndex from 'material-ui/styles/zIndex';
 
 const ESCAPE_KEY = 27;
@@ -208,7 +209,12 @@ class Menu extends Component {
                       }}
                       margin="dense"
                       autoFocus
-                      style={{ width: width - 48, paddingLeft: 24, paddingRight: 24 }}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <SearchIcon style={{ color: 'rgba(0, 0, 0, 0.52)' }} />
+                        </InputAdornment>
+                      }
+                      style={{ width: width - 48, marginLeft: 24, marginRight: 24 }}
                       onKeyDown={event => {
                         // Escape key support
                         if (event.keyCode === ESCAPE_KEY) {
