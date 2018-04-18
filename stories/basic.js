@@ -58,6 +58,7 @@ storiesOf('Basic', module)
         getInputProps={() => ({
           label: 'Star Wars character',
         })}
+        searchFilterLabel="Search"
         onChange={action('onChange')}
       />
     </div>
@@ -69,6 +70,7 @@ storiesOf('Basic', module)
           label: 'Star Wars character',
           helperText: 'Pick your favorite',
         })}
+        searchFilterLabel="Search"
         onChange={action('onChange')}
       />
     </div>
@@ -81,6 +83,7 @@ storiesOf('Basic', module)
           helperText: 'You did something wrong',
           error: true,
         })}
+        searchFilterLabel="Search"
         onChange={action('onChange')}
       />
     </div>

@@ -24,6 +24,7 @@ class MuiDownshift extends Component {
       itemToString,
       getRootProps,
       getFilteredItems,
+      searchFilterLabel,
 
       // Input
       getInputProps,
@@ -75,6 +76,7 @@ class MuiDownshift extends Component {
                   menuHeight={menuHeight}
                   downshiftProps={downshiftProps}
                   searchFilter={searchFilter}
+                  searchFilterLabel={searchFilterLabel}
                   onSearchFilterChange={this.handleSearchFilterChange}
                 />
               )}
@@ -105,6 +107,7 @@ MuiDownshift.defaultProps = {
     ) : null; // TODO: should we handle this or require user to implement `getListItem` at this point (`includeFooter` or an array of null/undefined)?
   },
   menuItemCount: 5,
+  searchFilterLabel: null,
 };
 
 MuiDownshift.propTypes = {
@@ -113,6 +116,7 @@ MuiDownshift.propTypes = {
   selectedItem: PropTypes.object,
   getRootProps: PropTypes.func,
   // getFilteredItems: PropTypes.func,
+  searchFilterLabel: PropTypes.string,
 
   // Input
   getInputProps: PropTypes.func,

@@ -183,7 +183,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { getInfiniteLoaderProps, onSearchFilterChange, ...props } = this.props;
+    const { getInfiniteLoaderProps, onSearchFilterChange, searchFilterLabel, ...props } = this.props;
     return (
       <AutoSizer>
         {({ width }) => (
@@ -203,32 +203,34 @@ class Menu extends Component {
                   </InfiniteLoader>
                 ) : (
                   <React.Fragment>
-                    <Input
-                      placeholder="Search"
-                      onChange={event => {
-                        onSearchFilterChange(event.target.value);
-                      }}
-                      margin="dense"
-                      autoFocus
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <SearchIcon style={{ color: 'rgba(0, 0, 0, 0.52)' }} />
-                        </InputAdornment>
-                      }
-                      style={{ width: width - 48, marginLeft: 24, marginRight: 24 }}
-                      onKeyDown={event => {
-                        switch (event.keyCode) {
-                          case ESCAPE_KEY:
-                            // Hide the menu
-                            props.downshiftProps.reset();
-                            break;
-                          case CURSOR_DOWN_KEY:
-                            // Focus the menu
-                            // this.muiVirtuallist.focus();
-                            break;
+                    {searchFilterLabel && (
+                      <Input
+                        placeholder="Search"
+                        onChange={event => {
+                          onSearchFilterChange(event.target.value);
+                        }}
+                        margin="dense"
+                        autoFocus
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <SearchIcon style={{ color: 'rgba(0, 0, 0, 0.52)' }} />
+                          </InputAdornment>
                         }
-                      }}
-                    />
+                        style={{ width: width - 48, marginLeft: 24, marginRight: 24 }}
+                        onKeyDown={event => {
+                          switch (event.keyCode) {
+                            case ESCAPE_KEY:
+                              // Hide the menu
+                              props.downshiftProps.reset();
+                              break;
+                            case CURSOR_DOWN_KEY:
+                              // Focus the menu
+                              // this.muiVirtuallist.focus();
+                              break;
+                          }
+                        }}
+                      />)
+                    }
                     <MuiVirtualList
                       {...props}
                       width={width}
