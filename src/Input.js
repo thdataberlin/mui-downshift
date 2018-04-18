@@ -12,7 +12,7 @@ class Input extends Component {
     this.props.downshiftProps.clearSelection();
 
     // Hack to fix issue #9
-    this.input.focus();
+    // this.input.focus();
     // this.input.blur();
   };
 
