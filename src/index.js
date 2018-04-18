@@ -18,19 +18,15 @@ class MuiDownshift extends Component {
     this.setState({ searchFilter: '' });
   }
 
-  focusSearchFilter() {
-    this.menu.focusSearchFilter();
-  }
-
   handleSearchFilterChange = event => {
     const newValue = event.target.value;
     this.setState({ searchFilter: newValue });
   };
 
+  // TODO: THis should now be unnessary
   handleStateChange = changes => {
-    if (changes.type === '__autocomplete_unknown__' && changes.isOpen)  {
+    if (changes.type === '__autocomplete_unknown__' && changes.isOpen) {
       this.resetSearchFilter();
-      this.focusSearchFilter();
     }
   };
 

@@ -169,20 +169,6 @@ class MuiVirtualList extends Component {
 }
 
 class Menu extends Component {
-  componentDidMount() {
-    const { onRef } = this.props;
-    onRef(this);
-    console.log('Menu componentDidMount', this.searchFilterInput);
-  }
-
-  focusSearchFilter() {
-    if (this.searchFilterInput) {
-      this.searchFilterInput.focus();
-    } else {
-      console.log('no this.searchFilterInput');
-    }
-  }
-
   render() {
     const { getInfiniteLoaderProps, searchFilter, onSearchFilterChange, ...props } = this.props;
     return (
@@ -209,16 +195,13 @@ class Menu extends Component {
                       value={searchFilter}
                       onChange={onSearchFilterChange}
                       margin="dense"
+                      autoFocus
                       style={{ width: width - 48, paddingLeft: 24, paddingRight: 24 }}
                       onKeyDown={event => {
                         // Escape key support
                         if (event.keyCode === 27) {
                           props.downshiftProps.reset();
                         }
-                      }}
-                      ref={input => {
-                        console.log('searchFilterInput sets ref');
-                        this.searchFilterInput = input;
                       }}
                     />
                     <MuiVirtualList {...props} width={width} />
