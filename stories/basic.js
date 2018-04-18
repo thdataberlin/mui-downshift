@@ -72,6 +72,18 @@ storiesOf('Basic', module)
         onChange={action('onChange')}
       />
     </div>
+  ))
+  .add('search filter and error', () => (
+    <div style={{ width: 300 }}>
+      <StarWarsSelect
+        getInputProps={() => ({
+          label: 'Star Wars character',
+          helperText: 'You did something wrong',
+          error: true,
+        })}
+        onChange={action('onChange')}
+      />
+    </div>
   ));
 
 storiesOf('Input', module).add('do not show menu on focus', () => (

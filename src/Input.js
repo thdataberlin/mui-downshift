@@ -32,7 +32,7 @@ class Input extends Component {
       ? getInputProps(downshiftProps)
       : {};
 
-    const isSomethingSelected = downshiftProps.inputValue;
+    const isSomethingSelected = !!downshiftProps.inputValue;
 
     return (
       <FormControl disabled={disabled} required={required} error={error} fullWidth>
